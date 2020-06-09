@@ -1,22 +1,15 @@
 package com.mateuszaksjonow;
 
-import java.util.Scanner;
-
 public class Main {
+
+    private final static int POOL_SIZE = 10;
+    private final static int NUMBER_OF_TASKS = 10;
+    private final static int BLOCKCHAIN_LENGTH = 5;
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter how many zeros the hash must starts with:");
-        int input = (scanner.nextInt());
-        scanner.nextLine();
+        Blockchain blockchain = Blockchain.getInstance();
 
-
-
-        Blockchain blockchain = new Blockchain(input);
-        for (int i = 0; i < 5; i++) {
-            blockchain.addBlock();
-            blockchain.printBlockchain(i);
-        }
+        blockchain.createBlockchain(POOL_SIZE, NUMBER_OF_TASKS, BLOCKCHAIN_LENGTH);
     }
 }

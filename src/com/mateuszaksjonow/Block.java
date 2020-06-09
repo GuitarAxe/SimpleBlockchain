@@ -22,6 +22,7 @@ public class Block {
 
     public String calculateHash(int zeroes) {
         StringBuilder start = new StringBuilder();
+        //adds more zeroes to hash code if creating block is too quick
         for (int i = 0; i < zeroes; i++) {
             start.append("0");
         }
@@ -30,10 +31,8 @@ public class Block {
         while (!quit) {
             Random random = new Random();
             magicNumber = random.nextInt();
-//            System.out.println(magicNumber);
             calculatedHash = StringUtil.applySha256(
                     Integer.toString(magicNumber) + previousHash + Long.toString(timeStamp));
-//            System.out.println(calculatedHash);
             if (calculatedHash.startsWith(start.toString())) quit = true;
         }
         return calculatedHash;
